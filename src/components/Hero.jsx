@@ -1,5 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -29,14 +29,12 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          <a
-            href="/Ashutosh_Patro.pdf"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to="/resume"
             className="px-5 py-2 bg-teal-600 text-white rounded-lg shadow hover:scale-[1.02]"
           >
             View Resume
-          </a>
+          </Link>
           <a
             href="#contact"
             className="px-5 py-2 border border-teal-600 text-teal-600 rounded-lg hover:bg-teal-50"
