@@ -1,16 +1,27 @@
-# React + Vite
+# Ashutosh Patro — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A 3D, scroll-driven portfolio: a character walks down a neon city street at dusk, stopping at billboards that each tell part of the résumé.
 
-Currently, two official plugins are available:
+```bash
+npm install
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Routes
 
-## React Compiler
+- `/` — the 3D walk (React Three Fiber)
+- `/classic` — the original single-page portfolio
+- `/resume` — the résumé page
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How the street works
 
-## Expanding the ESLint configuration
+- **Content** comes from `src/data/resume.js`; `src/three/config.js` maps it onto the stops (billboards) along the road.
+- **Scrolling** sets a target position in `src/three/walk.js`; the walker eases toward it and lingers at each stop.
+- `src/three/World.jsx` — canvas, lighting, camera rig, post-processing (bloom, vignette, grain)
+- `src/three/City.jsx` — wet reflective road, buildings with lit windows, street lamps, neon signs
+- `src/three/Billboards.jsx` — roadside billboards and the gantries that span the road
+- `src/three/Character.jsx` — the procedural walking character
+- `src/three/textures.js` — every texture is drawn on a canvas at runtime, so there are no image assets
+- `src/components/Hud.jsx` — HTML overlay: hero, stop navigation, links, progress bar
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Keyboard: `W`/`S` or arrow keys step between stops. Touch devices and small screens get a lighter render path (no road reflections, lower pixel ratio).

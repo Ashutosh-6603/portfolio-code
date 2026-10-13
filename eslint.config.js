@@ -27,6 +27,14 @@ export default defineConfig([
     rules: {
       "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
       "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+    },
+  },
+  {
+    // react-three-fiber JSX props (position, args, intensity…) aren't DOM attributes.
+    files: ["src/three/**/*.{js,jsx}"],
+    rules: {
+      "react/no-unknown-property": "off",
     },
   },
 ]);
